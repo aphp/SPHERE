@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "SPHERE_DEV_SERVER",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "postgres",
+            "Host": "sphere-db",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}

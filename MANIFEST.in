@@ -1,0 +1,6 @@
+recursive-include docs *
+recursive-include tests *
+recursive-include sphere/builder *
+include TODO_README.rst
+include TODO_LICENSE
+

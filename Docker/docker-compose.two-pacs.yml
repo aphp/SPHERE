@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  sphere-db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_MULTIPLE_DATABASES=pacs1, pacs2
+      - POSTGRES_PASSWORD=manager
+    networks:
+      - sphere
+    volumes:
+      - sphere-db-data:/var/lib/postgresql/data
+      - ./postgres/volumes/dev/init:/docker-entrypoint-initdb.d/
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=sphere@localhost.com
+      - PGADMIN_DEFAULT_PASSWORD=manager
+      - PGADMIN_LISTEN_ADDRESS=0.0.0.0
+      - PGADMIN_LISTEN_PORT=8080
+    volumes:
+      - ./pgadmin4/volumes/servers.json:/pgadmin4/servers.json:rw
+    ports: 
+      - 8080:8080
+    networks:
+      - sphere
+    depends_on:
+      - sphere-db
+
+  sphere-1:
+    image: localhost/sphere:1.11.0
+    environment:
+      - DICOM_PORT=11112
+      - DICOM_AET=PACS1
+      - POSTGRE_HOST=sphere-db
+      - POSTGRE_PORT=5432
+      - POSTGRE_NAME=pacs1
+      - POSTGRE_SCHEMA=pacs
+      - POSTGRE_LOGIN=pacs1
+      - POSTGRE_PASSWORD=pacs1
+      - API_SERVER_ENABLED=True
+      - API_SERVER_LISTENING_IP=0.0.0.0
+      - API_SERVER_LISTENING_PORT=8085
+      - API_DICOMWEB_ENABLED=True 
+    volumes:
+      - ./sphere/volumes/dev/conf-pacs_1:/opt/sphere/pacs/app:rw
+      - ./sphere/volumes/dev/data-pacs_1:/opt/sphere/pacs/data:rw
+    ports:
+      - 11112
+      - 8085:8085
+    networks:
+      - sphere
+    depends_on:
+      - sphere-db
+
+  sphere-2:
+    image: localhost/sphere:1.11.0
+    environment:
+      - DICOM_PORT=11113
+      - DICOM_AET=PACS2
+      - POSTGRE_HOST=sphere-db
+      - POSTGRE_PORT=5432
+      - POSTGRE_NAME=pacs2
+      - POSTGRE_SCHEMA=pacs
+      - POSTGRE_LOGIN=pacs2
+      - POSTGRE_PASSWORD=pacs2
+      - API_SERVER_ENABLED=True
+      - API_SERVER_LISTENING_IP=0.0.0.0
+      - API_SERVER_LISTENING_PORT=8082
+      - API_DICOMWEB_ENABLED=True 
+    volumes:
+      - ./sphere/volumes/dev/conf-pacs_2:/opt/sphere/pacs/app:rw
+      - ./sphere/volumes/dev/data-pacs_2:/opt/sphere/pacs/data:rw
+    ports:
+      - 11113
+      - 8082:8082    
+    networks:
+      - sphere
+    depends_on:
+      - sphere-db
+
+
+volumes:
+    sphere-db-data:
+      driver: local
+
+networks:
+  sphere:
+    driver: bridge

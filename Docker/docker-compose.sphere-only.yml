@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  sphere:
+    image: edsimagerie/sphere/sphere:1.8b0
+  environment: 
+    ports:
+    - 11112:11112
+    - 8080:8080
+    volumes:
+      - ./sphere/volumes/prod/conf-pacs:/opt/sphere/pacs/app:rw
+      - ./sphere/volumes/prod/data-pacs:/opt/sphere/pacs/data:rw
+    extra_hosts:
+      - "sphere-db:IP"

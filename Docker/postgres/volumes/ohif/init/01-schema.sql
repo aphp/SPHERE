@@ -1,0 +1,1 @@
+CREATE SCHEMA pacs AUTHORIZATION sphere;

@@ -1,0 +1,5 @@
+EXAMPLE :
+    ip   : 127.0.0.1
+    port : 4242     # port on which we can send (optional)
+EXEMPLEIN :
+    ip   : 127.0.0.1 # Authorize IP and AET to be called by

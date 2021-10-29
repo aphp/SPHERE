@@ -1,0 +1,21 @@
+pydicom==2.1.2  # DICOM
+pynetdicom==1.5.5  # DICOM
+
+pylibjpeg==1.3.0 # To Handle DICOM Pixel Data compression
+pylibjpeg-libjpeg==1.2.0 # To Handle DICOM Pixel Data compression
+pylibjpeg-rle==1.1.0 # To Handle DICOM Pixel Data compression
+pylibjpeg-openjpeg==1.1.1 # To Handle DICOM Pixel Data compression
+
+sqlalchemy==1.3.13  # ORM Database
+sqlalchemy-views==0.2.4  # Database
+psycopg2-binary==2.8.5  # Database
+requests==2.23.0
+
+Django==3.0.2  # API
+djangorestframework==3.11.0  # API
+
+
+PyYAML==5.3  # Yaml
+colorlog==4.1.0  # Log formatting with colors
+dirsync==2.2.4  # Directory synchrone
+psutil==5.6.7  # Process and system utilities

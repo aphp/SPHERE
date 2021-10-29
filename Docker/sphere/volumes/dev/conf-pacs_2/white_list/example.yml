@@ -1,0 +1,7 @@
+PACS1 :
+    ip   : sphere-1
+    port : 11112
+
+PACS2 :
+    ip   : sphere-2
+    port : 11113

@@ -1,0 +1,256 @@
+patient:
+    '00101020':
+        keyword: PatientSize
+        value_representations: DS
+        field_name: patient_s_size
+        type: String
+        size: 128
+    '00101030':
+        keyword: PatientWeight
+        value_representations: DS
+        field_name: patient_s_weight
+        type: String
+        size: 128
+study:
+    '00200010':
+        keyword: StudyID
+        value_representations: SH
+        field_name: study_dcm_id
+        type: String
+        size: 128
+    '00080030':
+        keyword: StudyTime
+        value_representations: TM
+        field_name: study_time
+        type: String
+        size: 128
+    '00080061':
+        keyword: ModalitiesInStudy
+        value_representations: CS
+        field_name: modalities_in_study
+        type: String
+        size: 128
+series:
+    '00189073':
+        keyword: AcquisitionDuration
+        value_representations: FD
+        field_name: acquisition_duration
+        type: String
+        size: 64
+    '00180020':
+        keyword: ScanningSequence
+        value_representations: CS
+        field_name: scanning_sequence
+        type: String
+        size: 128
+    '00181316':
+        keyword: SAR
+        value_representations: DS
+        field_name: sar
+        type: String
+        size: 128
+    '00180010':
+        keyword: ContrastBolusAgent
+        value_representations: LO
+        field_name: contrast_bolus_agent
+        type: String
+        size: 512
+    '00181040':
+        keyword: ContrastBolusRoute
+        value_representations: LO
+        field_name: contrast_bolus_route
+        type: String
+        size: 512
+    '00180084':
+        keyword: ImagingFrequency
+        value_representations: DS
+        field_name: imaging_frequency
+        type: String
+        size: 128
+    '00180023':
+        keyword: MRAcquisitionType
+        value_representations: CS
+        field_name: mr_acquisition_type
+        type: String
+        size: 128
+    '00180025':
+        keyword: AngioFlag
+        value_representations: CS
+        field_name: angio_flag
+        type: String
+        size: 128
+    '00180050':
+        keyword: SliceThickness
+        value_representations: DS
+        field_name: slice_thickness
+        type: String
+        size: 128
+    '00180080':
+        keyword: RepetitionTime
+        value_representations: DS
+        field_name: repetition_time
+        type: String
+        size: 128
+    '00180081':
+        keyword: EchoTime
+        value_representations: DS
+        field_name: echo_time
+        type: String
+        size: 128
+    '00180082':
+        keyword: InversionTime
+        value_representations: DS
+        field_name: inversion_time
+        type: String
+        size: 128
+    '00180083':
+        keyword: NumberOfAverages
+        value_representations: DS
+        field_name: number_of_averages
+        type: String
+        size: 128
+    '00180085':
+        keyword: ImagedNucleus
+        value_representations: SH
+        field_name: imaged_nucleus
+        type: String
+        size: 128
+    '00180086':
+        keyword: EchoNumbers
+        value_representations: IS
+        field_name: echo_numbers
+        type: String
+        size: 96
+    '00180087':
+        keyword: MagneticFieldStrength
+        value_representations: DS
+        field_name: magnetic_field_strength
+        type: String
+        size: 128
+    '00180088':
+        keyword: SpacingBetweenSlices
+        value_representations: DS
+        field_name: spacing_between_slices
+        type: String
+        size: 128
+    '00180089':
+        keyword: NumberOfPhaseEncodingSteps
+        value_representations: IS
+        field_name: number_of_phase_encoding_steps
+        type: String
+        size: 96
+    '00180090':
+        keyword: DataCollectionDiameter
+        value_representations: DS
+        field_name: data_collection_diameter
+        type: String
+        size: 128
+    '00180091':
+        keyword: EchoTrainLength
+        value_representations: IS
+        field_name: echo_train_length
+        type: String
+        size: 96
+    '00180093':
+        keyword: PercentSampling
+        value_representations: DS
+        field_name: percent_sampling
+        type: String
+        size: 128
+    '00180094':
+        keyword: PercentPhaseFieldOfView
+        value_representations: DS
+        field_name: percent_phase_field_of_view
+        type: String
+        size: 128
+    '00180095':
+        keyword: PixelBandwidth
+        value_representations: DS
+        field_name: pixel_bandwidth
+        type: String
+        size: 128
+    '00181100':
+        keyword: ReconstructionDiameter
+        value_representations: DS
+        field_name: reconstruction_diameter
+        type: String
+        size: 128
+    '00181310':
+        keyword: AcquisitionMatrix
+        value_representations: US
+        field_name: acquisition_matrix
+        type: String
+        size: 16
+    '00181312':
+        keyword: InPlanePhaseEncodingDirection
+        value_representations: CS
+        field_name: in_plane_phase_encoding_direction
+        type: String
+        size: 128
+    '00181314':
+        keyword: FlipAngle
+        value_representations: DS
+        field_name: flip_angle
+        type: String
+        size: 128
+    '00321060':
+        keyword: RequestedProcedureDescription
+        value_representations: LO
+        field_name: requested_procedure_description
+        type: String
+        size: 512
+instance:
+    '00201041':
+        keyword: SliceLocation
+        value_representations: DS
+        field_name: slice_location
+        type: String
+        size: 128
+    '00200032':
+        keyword: ImagePositionPatient
+        value_representations: DS
+        field_name: image_position_patient
+        type: String
+        size: 128
+    '00200037':
+        keyword: ImageOrientationPatient
+        value_representations: DS
+        field_name: image_orientation_patient
+        type: String
+        size: 128
+    '00280008':
+        keyword: NumberOfFrames
+        value_representations: IS
+        field_name: number_of_frames
+        type: String
+        size: 96
+    '00280010':
+        keyword: Rows
+        value_representations: US
+        field_name: rows
+        type: String
+        size: 16
+    '00280011':
+        keyword: Columns
+        value_representations: US
+        field_name: columns
+        type: String
+        size: 16
+    '00280030':
+        keyword: PixelSpacing
+        value_representations: DS
+        field_name: pixel_spacing
+        type: String
+        size: 128
+    '00540080':
+        keyword: SliceVector
+        value_representations: US
+        field_name: slice_vector
+        type: String
+        size: 16
+    '00540081':
+        keyword: NumberOfSlices
+        value_representations: US
+        field_name: number_of_slices
+        type: String
+        size: 16

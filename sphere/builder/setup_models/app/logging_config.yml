@@ -1,0 +1,246 @@
+version: 1
+disable_existing_loggers: False
+
+###############################################################################
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ formatters -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-#
+###############################################################################
+
+formatters:
+    simple_color:
+        (): 'colorlog.ColoredFormatter'
+        format: '%(log_color)s%(asctime)s :: %(name)-20s :: %(levelname)-8s ::  %(reset)s %(blue)s %(message)s'
+    extended_color:
+        (): 'colorlog.ColoredFormatter'
+        format: '%(log_color)s %(asctime)s :: %(name)-20s :: %(levelname)-8s :: %(filename)-18s :: line: %(lineno)-3s %(reset)s%(blue)s :: %(message)s'
+    simple:
+        format: '%(asctime)s :: %(name)-20s :: %(levelname)-8s :: %(message)s'
+    extended:
+        format: '%(asctime)s :: %(name)-20s :: %(levelname)-8s :: %(filename)-18s :: line: %(lineno)-3s :: %(message)s'
+
+###############################################################################
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ handlers-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+###############################################################################
+
+handlers:
+    ################################################
+    # -_-_-_-_-_-_-_-_-_ Console -_-_-_-_-_-_-_-_- #
+    ################################################
+    console:
+        class: logging.StreamHandler
+        level: WARNING
+        formatter: extended_color
+        stream: ext://sys.stdout
+
+    ################################################
+    # -_-_-_-_-_-_-_- Sphere PACS _-_-_-_-_-_-_-_- #
+    ################################################
+    command_event_handler: # command_event
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG  # In this log file we only have DEBUG or INFO logs
+        formatter: extended_color
+        filename: './log/command_event.log'
+        maxBytes: 10485760 # 10MB
+        backupCount: 5
+        encoding: utf8
+    #----------------- End Sphere Minimal logging -----------------#
+    pacs_handler: # pacs (pacs.access_list, pacs.event_sphere, pacs.transaction_dicom, pacs.file_dicom)
+            class: logging.handlers.RotatingFileHandler
+            level: WARNING
+            formatter: extended_color
+            filename: './log/pacs.log'
+            maxBytes: 10485760 # 10MB
+            backupCount: 20
+            encoding: utf8
+    # If you want to have several log files comment the pacs_handler and pacs in loggers
+    #------------------- Sphere multiple logging ------------------#
+#    access_list_handler: # pacs.access_list
+#        class: logging.handlers.RotatingFileHandler
+#        level: DEBUG
+#        formatter: extended_color
+#        filename: './log/access_list.log'
+#        maxBytes: 10485760 # 10MB
+#        backupCount: 5
+#        encoding: utf8
+#    event_sphere_handler: # pacs.event_sphere
+#        class: logging.handlers.RotatingFileHandler
+#        level: DEBUG  # In this log file we only have DEBUG or INFO logs
+#        formatter: extended_color
+#        filename: './log/event_sphere.log'
+#        maxBytes: 10485760 # 10MB
+#        backupCount: 20
+#        encoding: utf8
+#    transaction_dicom_handler: # pacs.transaction_dicom
+#        class: logging.handlers.RotatingFileHandler
+#        level: DEBUG
+#        formatter: extended_color
+#        filename: './log/transaction_dicom.log'
+#        maxBytes: 10485760 # 10MB
+#        backupCount: 20
+#        encoding: utf8
+#    file_dicom_handler: # pacs.file_dicom
+#        class: logging.handlers.RotatingFileHandler
+#        level: DEBUG
+#        formatter: extended_color
+#        filename: './log/file_dicom.log'
+#        maxBytes: 10485760 # 10MB
+#        backupCount: 20
+#        encoding: utf8
+#    database_handler: # pacs.database
+#        class: logging.handlers.RotatingFileHandler
+#        level: DEBUG
+#        formatter: extended_color
+#        filename: './log/database.log'
+#        maxBytes: 10485760 # 10MB
+#        backupCount: 20
+#        encoding: utf8
+#    code_python_handler: # pacs.code_python
+#        class: logging.handlers.RotatingFileHandler
+#        level: WARNING
+#        formatter: extended_color
+#        filename: './log/code_python.log'
+#        maxBytes: 10485760 # 10MB
+#        backupCount: 5
+#        encoding: utf8
+    #----------------- End Sphere multiple logging ----------------#
+
+    ################################################
+    # -_-_-_-_-_-_-_- API Annotation -_-_-_-_-_-_- #
+    ################################################
+    api_annotation_handler: # api_annotation
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        formatter: extended_color
+        filename: './log/api_annotation.log'
+        maxBytes: 10485760 # 10MB
+        backupCount: 20
+        encoding: utf8
+    ################################################
+    # -_-_-_-_-_-_-_- API DicomWeb -_-_-_-_-_-_- #
+    ################################################
+    api_dicomweb_handler: # api_dicomweb
+        class: logging.handlers.RotatingFileHandler
+        level: INFO
+        formatter: extended_color
+        filename: './log/api_dicomweb.log'
+        maxBytes: 10485760 # 10MB
+        backupCount: 20
+        encoding: utf8
+    ################################################
+    # -_-_-_-_-_-_-_-_ Sphere INDEX _-_-_-_-_-_-_- #
+    ################################################
+    index_data_handler: # index_data
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        formatter: extended_color
+        filename: './log/index_data.log'
+        maxBytes: 10485760 # 10MB
+        backupCount: 20
+        encoding: utf8
+
+    ################################################
+    # -_-_-_-_-_- Module use by sphere -_-_-_-_-_- #
+    ################################################
+    pynetdicom_handler: # pynetdicom
+        class: logging.handlers.RotatingFileHandler
+        level: WARNING
+        formatter: extended_color
+        filename: './log/pynetdicom.log'
+        maxBytes: 1000000000 # 1GB
+        backupCount: 20
+        encoding: utf8
+
+    sqlalchemy_handler: # sqlalchemy
+        class: logging.handlers.RotatingFileHandler
+        level: WARNING
+        formatter: extended_color
+        filename: './log/sqlalchemy.log'
+        maxBytes: 1000000000 # 1GB
+        backupCount: 20
+        encoding: utf8
+
+###############################################################################
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- loggers_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-#
+###############################################################################
+
+loggers:
+    ################################################
+    # -_-_-_-_-_-_-_-_- Sphere PACS _-_-_-_-_-_-_- #
+    ################################################
+    command_event: # command_event
+        level: DEBUG
+        handlers: [command_event_handler]
+        propagate: yes
+
+    #------------------- Sphere Minimal logging -------------------#
+    pacs: # # pacs (pacs.access_list, pacs.event_sphere, pacs.transaction_dicom, pacs.file_dicom)
+        level: DEBUG
+        handlers: [pacs_handler]
+        propagate: yes
+    #----------------- End Sphere Minimal logging -----------------#
+
+    # If you want to have several log files comment the pacs_handler and pacs in loggers
+    #------------------- Sphere multiple logging ------------------#
+#    pacs.access_list: # pacs.access_list
+#        level: DEBUG
+#        handlers: [access_list_handler]
+#        propagate: yes
+#    pacs.event_sphere: # pacs.event_sphere
+#        level: DEBUG
+#        handlers: [event_sphere_handler]
+#        propagate: yes
+#    pacs.transaction_dicom: # pacs.transaction_dicom
+#        level: DEBUG
+#        handlers: [transaction_dicom_handler]
+#        propagate: yes
+#    pacs.file_dicom: # pacs.file_dicom
+#        level: DEBUG
+#        handlers: [file_dicom_handler]
+#        propagate: yes
+#    pacs.database: # pacs.database
+#        level: DEBUG
+#        handlers: [database_handler]
+#        propagate: yes
+#    pacs.code_python: # pacs.code_python
+#        level: DEBUG
+#        handlers: [code_python_handler]
+#        propagate: yes
+    #----------------- End Sphere multiple logging ----------------#
+
+    ################################################
+    # -_-_-_-_-_-_-_- API Annotation -_-_-_-_-_-_- #
+    ################################################
+    api_annotation: # api_annotation
+        level: DEBUG
+        handlers: [api_annotation_handler]
+        propagate: yes
+    ################################################
+    # -_-_-_-_-_-_-_- API DicomWeb -_-_-_-_-_-_- #
+    ################################################
+    api_dicomweb: # api_dicomweb
+        level: DEBUG
+        handlers: [api_dicomweb_handler]
+        propagate: yes
+    ################################################
+    # -_-_-_-_-_-_-_-_ Sphere INDEX _-_-_-_-_-_-_- #
+    ################################################
+    index_data: # index_data
+        level: DEBUG
+        handlers: [index_data_handler]
+        propagate: yes
+
+    ################################################
+    # -_-_-_-_-_-_- module use by sphere -_-_-_-_- #
+    ################################################
+    pynetdicom: # pynetdicom
+        level: DEBUG
+        handlers: [pynetdicom_handler]
+        propagate: yes
+
+    sqlalchemy: # sqlalchemy
+        level: DEBUG
+        handlers: [sqlalchemy_handler]
+        propagate: yes
+
+root:
+    level: DEBUG
+    handlers: [console]

@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+# SPHERE Solution Pacs Health Research command line
+
+from sphere.builder.builder import createPacs
+
+if __name__ == '__main__':
+    createPacs()

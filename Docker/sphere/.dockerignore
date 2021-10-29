@@ -1,0 +1,7 @@
+#Fichier permettant d'exclure du contexte de build Docker les ressources inutiles
+
+##Exclu l'ensemble des ressources du repository
+*
+
+##Ajoute un pattern d'exception pour les sources qui serviront à packager la distribution wheel
+!/dist/sphere-*-py3-none-any.whl

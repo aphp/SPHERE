@@ -1,0 +1,15 @@
+# All tags in this format
+
+#    Example of tags
+# patient:
+#    - '00101020'
+#    - '00409096,00409224' # if we have child tags. You must add the parent tags separate by comma.
+#study:
+#    - '00080030'
+#    - ...
+#series:
+#    - '00080031'
+#    - ...
+#instance:
+#    - '00080008'
+#    - ...
