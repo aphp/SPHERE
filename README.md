@@ -1,4 +1,4 @@
-# Introduction de SPHERE <!-- omit in toc -->
+# Présentation SPHERE <!-- omit in toc -->
 
 
 ## Qu'est-ce que Sphère ?
